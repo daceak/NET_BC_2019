@@ -10,6 +10,8 @@ namespace Exceptions
     {
         static void Main(string[] args)
         {
+            //kreisaja puse tiek iekrasots, kas sobrid tiek mainits un ko saglabas version control
+
         }
     }
 }
