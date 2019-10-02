@@ -8,21 +8,31 @@ namespace Error_Handling
 {
     class UserProfile
     {
-        public string FullName;
-        public char Gender;
-        public DateTime Birthday;
+        public enum Genders
+        {
+            Male,
+            Female
+        }
+        public string FullName { get; set; }
+        public Genders Gender { get; set; }
+        public DateTime Birthday { get; set; }
+        //public char Gender;
 
-        public UserProfile(string fullName, char gender, DateTime birthday)
+        public UserProfile()
+        {
+
+        }
+        public UserProfile(string fullName, Genders gender, DateTime birthday)
         {
             FullName = fullName;
             Gender = gender;
             Birthday = birthday;
         }
 
-        public int Age(DateTime birthday)
+        public int Age()
         {
             int yearNow = DateTime.Today.Year;
-            int birthYear = birthday.Year;
+            int birthYear = Birthday.Year;
             int age = yearNow - birthYear;
             return age;
         }
