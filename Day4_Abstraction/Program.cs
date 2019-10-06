@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Error_Handling
+namespace Day4_Abstraction
 {
-    class UsersExceptions : Exception
+    class Program
     {
-        
-        public UsersExceptions (string message)
-            :base(message)
+        static void Main(string[] args)
         {
 
         }

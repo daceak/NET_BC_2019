@@ -17,33 +17,31 @@ namespace Error_Handling
             UsersList users = new UsersList();
             while(true)
             {
-            Console.WriteLine("Add new user? y/n");
-            char proceed = char.Parse(Console.ReadLine());
-            if (proceed == 'y')  //char liek ''   string ""
-            {
-             string fullName = GetName("Enter full name: ");
-             UserProfile.Genders gender = GetGender("Enter gender: ");
-             DateTime birthday = GetBirthday("Enter birthday: ");
+                Console.WriteLine("Add new user? y/n");
+                char proceed = char.Parse(Console.ReadLine());
+                if (proceed == 'y')  //char liek ''   string ""
+                {
+                    string fullName = GetName("Enter full name: ");
+                    UserProfile.Genders gender = GetGender("Enter gender (Female: 0, Male: 1): ");
+                    DateTime birthday = GetBirthday("Enter birthday: ");
 
-            /*Console.WriteLine("Enter gender Male/Female: ");
-                    string input = Console.ReadLine()
-            UserProfile.Genders gender = Enum.TryParse(Console.ReadLine());*/
-
-            users.Add(fullName, gender, birthday);
-
+                    users.Add(fullName, gender, birthday);
+                }
+                else
+                {
+                    users.Display();
+                    break;
+                }
             }
-            else
-                break;
-            }
-
             Console.Read();
+
         }
 
 
         public static UserProfile.Genders GetGender(string q)
         {
             Console.WriteLine(q);
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToLower();
             if(Enum.TryParse(input, out UserProfile.Genders gender))
             {
                 return gender;
@@ -51,6 +49,7 @@ namespace Error_Handling
 
             else
             {
+                Console.WriteLine("Not valid input!");
                 return GetGender(q);
             }
         }
@@ -66,8 +65,9 @@ namespace Error_Handling
 
                 
             }
-            catch(Exception)   //vajag taisit individualos exceptions lai paraditu konkretu pazinojumu, piem., ja datums nepareizi tad zinu ""nepareizs formats"
+            catch(Exception)
             {
+                Console.WriteLine("Wrong input");
                 return GetBirthday(q);
             }
         }
@@ -77,8 +77,9 @@ namespace Error_Handling
         {
             Console.WriteLine(q);
             string fullName = Console.ReadLine();
+            fullName = fullName.Trim();
 
-            if (fullName.Length <= 20)
+            if (!String.IsNullOrEmpty(fullName))    
             {
                 return fullName;
             }
@@ -86,7 +87,7 @@ namespace Error_Handling
 
             else
             {
-                Console.WriteLine("Name too long!");
+                Console.WriteLine("Empty text!");
                 return GetName(q);
             }
         }

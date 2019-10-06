@@ -10,8 +10,8 @@ namespace Error_Handling
     {
         public enum Genders
         {
-            Male,
-            Female
+            Female,
+            Male
         }
         public string FullName { get; set; }
         public Genders Gender { get; set; }

@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Error_Handling
+namespace Day4_Abstraction
 {
-    class UsersExceptions : Exception
+    public interface IPlayer
     {
-        
-        public UsersExceptions (string message)
-            :base(message)
+        public static int GuessNumber()
         {
-
+            int num = 0;
+            return num;
         }
     }
 }
