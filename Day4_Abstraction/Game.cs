@@ -11,16 +11,28 @@ namespace Day4_Abstraction
         int CurrentNumber; // current number player guesses
         IPlayer PlayerOne;
         IPlayer PlayerTwo;
-        public static void StartNewGame() // generates new random number
+        public void StartNewGame() // generates new random number
         {
+            Random random = new Random();
+            CurrentNumber = random.Next(1, 501);
+
+            PlayerOne = new User();
+            PlayerTwo = new Robot();
 
         }
-        public static void Loop() // main game logic
+        public void Loop() // main game logic
         {
-
+            //playerturn
+            //robotguess etc
+            while(true)
+            {
+                PlayerTurn(PlayerOne);
+            }
         }
-        public static void PlayerTurn(IPlayer player) // player move
+        public void PlayerTurn(IPlayer player) // player move
         {
+            player.GuessNumber();
+            
 
         }
     }

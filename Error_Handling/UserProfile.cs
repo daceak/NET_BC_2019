@@ -34,6 +34,11 @@ namespace Error_Handling
             int yearNow = DateTime.Today.Year;
             int birthYear = Birthday.Year;
             int age = yearNow - birthYear;
+
+            if(Birthday.Month > DateTime.Today.Month)
+            {
+                age -= 1;
+            }
             return age;
         }
     }

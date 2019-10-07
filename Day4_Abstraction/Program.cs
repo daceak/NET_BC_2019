@@ -10,7 +10,18 @@ namespace Day4_Abstraction
     {
         static void Main(string[] args)
         {
+            try
+            {
+                Game game = new Game();
+                game.StartNewGame();
+                game.Loop();
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("Unexpected error!");
+            }
 
+            Console.Read();
         }
     }
 }

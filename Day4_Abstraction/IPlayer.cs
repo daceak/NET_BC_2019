@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Day4_Abstraction
 {
-    public interface IPlayer
+    public interface IPlayer  //interface tikai norada, kam ir jabut
     {
-        public static int GuessNumber()
-        {
-            int num = 0;
-            return num;
-        }
+        int GuessNumber();
+        bool IsNumberGuessed(int number);
+        string GetName();
     }
 }
