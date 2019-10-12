@@ -1,0 +1,55 @@
+﻿body /*first defines what will be described. Waterfall principle- 
+    if object has to implement many things defined here and some are different for the same object, the last will stay as implemented as the last*/
+{
+    background: wheat;
+    margin: 20px; /*margin no arpuses atkape, padding no iekspuses- pulkstenraditaja virziena ievies visas noraditas vertibas (5,6,9,10)
+        Content-padding, border, margin*/
+    padding: 5px 6px 9px 10px;
+    border: 5px dashed red;
+    font-family: 'Open Sans';
+    font-size: 14px;
+}
+/*
+    R ed
+    G reen
+    B lue
+
+    any color made from rgb(40,0,0). Hex decimal Code 0-F   #__ __ __ katra sadala par savu krasu atbild
+*/
+
+div.left{
+    background: yellow;        
+    float: left;
+    width: 20%;
+        }
+div.right{
+    background : green;
+    float: right;
+}
+div.nexttoLeft{
+    float: left;
+}
+span, div {
+    color: white;
+}
+
+#login{
+    background: black;
+    color: white;
+}
+
+table, th, td {
+    border-color:darkblue;
+        border-style:solid;
+        border-width:thin;
+}
+table td{
+    color: red;
+}
+
+.blue{ /*. pirms klasem liek, kas noraditi html faila un velak atsaucas uz seit nodefineto*/
+    color:blue;
+}
+.bold{
+    font-weight:bold;
+}

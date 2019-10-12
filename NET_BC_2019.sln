@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleHelpers", "ConsoleHe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackjack", "Blackjack\Blackjack.csproj", "{19AD9430-65D3-4335-B742-94198E0DE580}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web_examples", "Web_examples", "{6C24BD87-10DA-4BE8-83B8-893998EF927D}"
+	ProjectSection(SolutionItems) = preProject
+		IndexHtml.html = IndexHtml.html
+		StyleCSS.css = StyleCSS.css
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
