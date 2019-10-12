@@ -7,23 +7,25 @@ using System.Threading.Tasks;
 
 namespace Blackjack
 {
-    class Player : BasePlayer
+    public class Player : BasePlayer
     {
-        public override string GetName()
+        public override string GetName() //abstract, kad parraksta abstraktu metodi no mantotas klases
         {
-            return "Dealer";
+            if(!String.IsNullOrEmpty(Name))
+            {
+                return Name;
+            }
+            return ConsoleInput.GetText("Enter your name: ");
         }
         public override bool WantCard()
         {
-            string another = ConsoleInput.GetText("Do you want another card (y/n)? ").ToLower();
-            if (another == "y")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return ConsoleInput.GetBool("Do you want another card (y/n)? ");
+        }
+
+        public override void GiveCard(Card card) //so metodi parraksta no klases BasePlayer
+        {
+            base.GiveCard(card); //base nosaka- izsaukt ari bazes klases funkciju. bez base neizmantos esošo saturu šai metodei
+            Console.WriteLine($"You got card: {card.GetTitle()}, total points now: {CountPoints()}");
         }
     }
 }

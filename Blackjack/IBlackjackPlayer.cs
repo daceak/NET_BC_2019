@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Blackjack
 {
-    interface IBlackjackPlayer
+    public interface IBlackjackPlayer       //interface neko nerealize, ja vajag realizet kadu metodi, tad jaizmanto abstract class
     {
         // Returns player’s name
         string GetName();

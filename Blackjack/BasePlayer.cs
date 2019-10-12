@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace Blackjack
 {
     public abstract class BasePlayer : IBlackjackPlayer
-    {
+    {               //encapsulation- visas ipasibas tiek definets viena klase ka privatas
+        //private netiek mantots
         protected string Name { get; set; }
         protected List<Card> Cards { get; set; }
 
@@ -44,7 +45,7 @@ namespace Blackjack
 
     public abstract string GetName();
 
-        public void GiveCard(Card card)
+        public virtual void GiveCard(Card card) //ar virtual nosaka, ka klases, kas manto so klasi, var parrakstit konkreto metodi. Polymorphism
         {
             Cards.Add(card);
         }
@@ -54,6 +55,6 @@ namespace Blackjack
             return CountPoints() > 21;
         }
 
-        public abstract bool WantCard();
+        public abstract bool WantCard(); //abstract metodes noeikti japarraksta (override) klase, kura manto so klasi
     }
 }

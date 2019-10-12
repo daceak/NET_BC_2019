@@ -6,22 +6,16 @@ using System.Threading.Tasks;
 
 namespace Blackjack
 {
-    class Dealer : BasePlayer
+    public class Dealer : BasePlayer
     {
+        public const string DEALER_NAME = "Mr. Dealer";
         public override string GetName()
         {
-            throw new NotImplementedException();
+            return DEALER_NAME;
         }
         public override bool WantCard()
         {
-            if ()
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return CountPoints() < 17;
         }
     }
 }

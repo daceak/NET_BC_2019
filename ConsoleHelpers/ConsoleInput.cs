@@ -21,5 +21,18 @@ namespace ConsoleHelpers
         {
             return new IntegerReader().GetValue(question);
         }
+
+        public static bool GetBool(string question)
+        {
+            string answer = GetText(question).ToLower();
+            if(answer == "y" || answer == "yes")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

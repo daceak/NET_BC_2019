@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Blackjack
 {
-    public class Card : Deck
+    public class Card
     {
-        string Rank;
-        string Suit;
+        protected string Rank;
+        protected string Suit;
         public Card(string rank, string suit)
         {
             Rank = rank;
