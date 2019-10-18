@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <!--bootsrap liek head sadala, jo atticas uz visu projektu-->
+    <title></title>
+</head>
+<body>
+    <form>
+        Name: <input type="text" id="name" />
+        Age: <input type="number" id="age" />
+        <button type="button" id="ok">Ok!</button>
+        <hr />
+
+        Number one: <input type="number" id="no1" />
+        Number one: <input type="number" id="no2" />
+
+        <button type="button" id="plus">Sum</button>
+        <button type="button" id="minus">Minus</button>
+
+    </form>
+
+    <div id="result"></div>
+    <div id="mathResult"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  <!--reference to jQuery library, in here after everything so all has loaded-->
+    <script src="ScriptJS.js"></script>
+
+    <div class="container">
+        <!--block in center-->
+        <div class="row">
+            <!--total 12 columns to fill all page- how row is distributed,e.g., 1 row first div  4 columns and second 8 columns-->
+            <div class="col-sm-6 col-md-4">
+                <div class="alert alert-success">
+                    4 columns
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <!--sizes for different devices, can be less than 12 as well, in this case not all window will be filled with content-->
+                <div class="alert alert-success">
+                    8 columns
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="alert alert-success">
+                    4 columns
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <!--Column in additional row no matter how many columns-->
+                <div class="alert alert-success">
+                    Column in an additional row
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
