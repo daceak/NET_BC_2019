@@ -37,16 +37,26 @@ namespace WebShop
             Categories.Add(new Category()
             {
                 Id = 1,
-                Title = "Test category 1",
-                CategoryId = 3
-            }); ;
+                Title = "Category 1"
+            });
 
             Categories.Add(new Category()
             {
                 Id = 2,
-                Title = "Test category 2",
+                Title = "Category 2",
+            });
+            Categories.Add(new Category()
+            {
+                Id = 3,
+                Title = "Sub category 1",
+                CategoryId = 1
+            });
+            Categories.Add(new Category()
+            {
+                Id = 4,
+                Title = "Sub category 2",
                 CategoryId = 2
-            }); ;
+            });
         }
     }
 }

@@ -9,11 +9,12 @@ namespace WebShop
     public class UserManager
     {
         private int currentId;
-        public List<User> Users;
+        //static nosaka, ka sis mainigais nav saistits ne ar vienu objektu. Veidojot jaunu user manager netiks katru reizi taisits jauns saraksts pari ieprieksejam
+        private static List<User> Users = new List<User>();  
+
 
         public UserManager()
         {
-            Users = new List<User>();
             currentId = 100;
         }
 

@@ -1,0 +1,23 @@
+﻿@model List<WebShop.Item>
+@* ja butu vairakas lietas (piem., listi) vajadzigas, tad taisitu jaunu modeli- Models mapite kuru izsauktu seit*@
+@{
+    ViewData["Title"] = "Basket";
+}
+
+<h2>Basket</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Price</td>
+            <td><a asp-controller="Item" asp-action="Delete" asp-route-id="@item.Id">Remove</a></td> @*asp-route-id parametrs ko dod lidzi. saja gadijuma id*@
+        </tr>
+    }
+</table>

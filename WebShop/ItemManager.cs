@@ -55,7 +55,7 @@ namespace WebShop
                 Price = 10.11,
                 Title = "Test Title 1",
                 Description = "This is item 1 description",
-                CategoryId = 2
+                CategoryId = 3
             });
 
             Items.Add(new Item()
@@ -63,9 +63,20 @@ namespace WebShop
                 Id = 2,
                 Price = 20.11,
                 Title = "Test Title 2",
+                //Picture = "<img src=\"\
                 Description = "This is item 2 description",
                 CategoryId = 4
-            }); ;
+            });
+
+            Items.Add(new Item()
+            {
+                Id = 3,
+                Price = 30.11,
+                Title = "Test Title 3",
+                //Picture = "<img src=\"\
+                Description = "This is item 3 description",
+                CategoryId = 4
+            });
         }
     }
 }

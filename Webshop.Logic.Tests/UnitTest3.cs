@@ -36,7 +36,7 @@ namespace Webshop.Logic.Tests
             updated.Password = "321";
             manager.Update(updated);
 
-            Assert.AreNotEqual("4321", manager.Users.Find(u => u.Email == "e@l.lv"));
+            Assert.AreNotEqual("4321", manager.Users.Find(u => u.Email == "e@l.lv").Password);
             Assert.AreEqual("321", manager.GetByEmail("e@l.lv").Password);
         }
 

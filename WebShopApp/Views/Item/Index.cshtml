@@ -1,0 +1,62 @@
+﻿@model CatalogModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Categories</h2>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class=" nav nav-pills nav-stacked">
+                    @foreach (var category in Model.Categories.FindAll(c => !c.CategoryId.HasValue))
+                    {
+                        <li class="active"><a href="#">@category.Title</a></li>
+
+                        @foreach (var subcategory in Model.Categories.FindAll(c => c.CategoryId == category.Id))
+                                {
+                            <li><a asp-controller="Item" asp-action="Index"  asp-route-id="@subcategory.Id">@subcategory.Title<span class="badge navbar-right">@Model.AllItems.Count(c => c.CategoryId == subcategory.Id)</span></a></li>
+                        }
+
+
+                    }
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <!--shows how far in the page you are-->
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Electronics</a></li>
+                        <li class="active">Mobile</li>
+                    </ol>
+                </div>
+            </div>
+
+            @foreach (var item in Model.Items)
+            {
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="@item.Photo">
+                            <img src="@item.Photo" alt="Samsung Photo" style="height:100px">
+                        </a>
+                        <div class="caption" style="text-align:center">
+                            <div>
+                                <h3>
+                                    @item.Title
+                                </h3>
+                            </div>
+                            <div>
+                                @item.Price
+                            </div>
+                            <div>
+                                <a asp-controller="Item" asp-action="Buy" asp-route-id="@item.Id" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</body>

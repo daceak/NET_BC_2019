@@ -30,6 +30,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Logic.Tests", "Webs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop", "WebShop\WebShop.csproj", "{21851E8D-3B84-42F9-8582-CEC3BAF1DD78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSample", "WebSample\WebSample.csproj", "{F35A038B-ECA4-4330-806C-34D52009C661}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShopApp", "WebShopApp\WebShopApp.csproj", "{86025BDA-427F-44F7-A2AC-70A9C1C45E43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +76,14 @@ Global
 		{21851E8D-3B84-42F9-8582-CEC3BAF1DD78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21851E8D-3B84-42F9-8582-CEC3BAF1DD78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21851E8D-3B84-42F9-8582-CEC3BAF1DD78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F35A038B-ECA4-4330-806C-34D52009C661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35A038B-ECA4-4330-806C-34D52009C661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35A038B-ECA4-4330-806C-34D52009C661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35A038B-ECA4-4330-806C-34D52009C661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86025BDA-427F-44F7-A2AC-70A9C1C45E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86025BDA-427F-44F7-A2AC-70A9C1C45E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86025BDA-427F-44F7-A2AC-70A9C1C45E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86025BDA-427F-44F7-A2AC-70A9C1C45E43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

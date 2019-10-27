@@ -1,0 +1,25 @@
+﻿@model SignInModel
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+<h3 style="font-weight:600">Please sign in with your credentials</h3>
+
+@Html.ValidationSummary()
+@TempData["message"] 
+
+<body>
+    <form class="form-horizontal" action="SignIn" method="post">
+        <div class="form-group">
+            @* label for aktivize ievadlauku pec id vertibas *@
+            <label for="newEmail">Email address</label><br />
+            <input asp-for="Email" class="form-control" id="newEmail" style="width:150px" placeholder="Email" />
+        </div>
+        <div class="form-group">
+            <label for="newPassword">Password</label>
+            <input asp-for="Password" class="form-control" id="newPassword" placeholder="Password" style="width:150px">
+        </div>
+        <button type="submit" class="btn btn-default" style="background-color:royalblue; color:white" name="submitSignup" id="submitSignup">Sign in</button>
+
+    </form>
+</body>

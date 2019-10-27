@@ -1,0 +1,17 @@
+﻿@model List<LogicSample.User>
+    <!--var but viens modelis, sis html fails vienmer sanems sarakstu, bet nodos controller uz sejieni-->
+@{
+    ViewData["Title"] = "User list";
+}
+
+<h2>User list</h2>
+<!--model no defineta sakuma-->
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>User name</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr><td>@user.Name</td></tr>
+    }
+</table>
