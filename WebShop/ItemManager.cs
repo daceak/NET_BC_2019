@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,77 +7,41 @@ using System.Threading.Tasks;
 
 namespace WebShop
 {
-    public class ItemManager
+    public class ItemManager :BaseManager<Item>
     {
-        private int currentId;
-        public List<Item> Items;
 
-        public ItemManager()
+        public ItemManager(WebShopDB db)
+            : base(db) //izsauc bazes konstruktoru
         {
-            Items = new List<Item>();
-            currentId = 100;
+
         }
+
+        protected override DbSet<Item> Table
+        {
+            get
+            {
+                return _db.Items;
+            }
+        }
+
         public List<Item> GetByCategory (int categoryId)
         {
-            return Items.FindAll(i => i.CategoryId == categoryId);
+            return _db.Items
+                .Where(i => i.CategoryId == categoryId)
+                .ToList(); //jaliek to list jo no datubazes neatgriez saraksta veida
         }
 
-        public Item Create(Item item)
+        /* public Item Update(Item item) //full description //Item
+         {
+             Item updatedItem = _db.Items.FirstOrDefault(i => i.Id == item.Id); //firstordefault izmanto lai datubazs tabula mekletu
+             //katrai vertibai atseviski updatedItem.Title = item.Title
+             updatedItem = item;
+             _db.SaveChanges(); //lai saglabatu izmainas datubaze
+             return updatedItem;
+         }*/
+
+        public void Seed() //so metodi atstaj jo unit testos ir ielikta un butu japarraksta so metodi
         {
-            item.CategoryId = currentId;
-            Items.Add(item);
-            currentId++;
-            return item;
-        }
-
-        public Item Update(Item item) //full description //Item
-        {
-            Item updatedItem = Items.Find(i => i.Id == item.Id);
-            updatedItem = item;
-            return updatedItem;
-        }
-
-        public void Delete(Item item)
-        {           
-            Items.Remove(Items.Find(i => i.Id == item.Id));
-        }
-
-        public Item Get(int id)
-        {
-            Item item = Items.Find(i => i.Id == id);
-            return item;
-        }
-
-        public void Seed()
-        {
-            Items.Add(new Item()
-            {
-                Id = 1,
-                Price = 10.11,
-                Title = "Test Title 1",
-                Description = "This is item 1 description",
-                CategoryId = 3
-            });
-
-            Items.Add(new Item()
-            {
-                Id = 2,
-                Price = 20.11,
-                Title = "Test Title 2",
-                //Picture = "<img src=\"\
-                Description = "This is item 2 description",
-                CategoryId = 4
-            });
-
-            Items.Add(new Item()
-            {
-                Id = 3,
-                Price = 30.11,
-                Title = "Test Title 3",
-                //Picture = "<img src=\"\
-                Description = "This is item 3 description",
-                CategoryId = 4
-            });
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿@model List<AdsAppLogic.Ad>
+@{
+    ViewData["Title"] = "UserAds";
+}
+@TempData["message"]
+<h2>UserAds</h2>
+
+@if (Model.Count < 1)
+{
+    <div>Your don't have any ads</div>
+}
+else
+{
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Title</th>
+            <th>Descripton</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        @foreach (var ad in Model)
+        {
+            <tr>
+                <td><a asp-controller="Ads" asp-action="Ad" asp-route-id="@ad.Id">@ad.Title</a></td>
+                <td>@ad.Description</td>
+                <td>@ad.Price</td>
+                <td><a asp-controller="Ads" asp-action="Delete" asp-route-id="@ad.Id">Delete</a></td> @*asp-route-id parametrs ko dod lidzi. saja gadijuma id*@
+            </tr>
+        }
+    </table>
+}

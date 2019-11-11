@@ -3,60 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebShop
 {
-    public class CategoryManager
+    public class CategoryManager : BaseManager<Category> //norada mainiga tipu (klase BaseManager aizstaj T) ar kadu izpildit metodes
     {
-        public List<Category> Categories;
-        int currentId;
-        public CategoryManager()
+        //visas metodes ir pieejamas saja klase
+        public CategoryManager(WebShopDB db) //ka parametru sanem datubazi
+            : base(db) //ar so liniju izsauc bazes klases konstruktoru- izveido BaseManager
         {
-            Categories = new List<Category>();
-            currentId = 100;
-        }
-        public Category Create(Category category)
-        {
-            category.Id = currentId;
-            Categories.Add(category);
-            currentId++;
-            return category;
+
         }
 
-        public List<Category> GetAll()
+        //implement absract ipasibu-mainigoar override-enter
+        protected override DbSet<Category> Table
         {
-            return Categories;
-        }
-        public Category Get(int categoryid)
-        {
-            return Categories.Find(c => c.CategoryId == categoryid);
+            get
+            {
+                return _db.Categories;
+            }
         }
 
         public void Seed()
         {
-            Categories.Add(new Category()
-            {
-                Id = 1,
-                Title = "Category 1"
-            });
 
-            Categories.Add(new Category()
-            {
-                Id = 2,
-                Title = "Category 2",
-            });
-            Categories.Add(new Category()
-            {
-                Id = 3,
-                Title = "Sub category 1",
-                CategoryId = 1
-            });
-            Categories.Add(new Category()
-            {
-                Id = 4,
-                Title = "Sub category 2",
-                CategoryId = 2
-            });
         }
     }
 }

@@ -1,0 +1,41 @@
+﻿@model AdsAppLogic.Ad
+@{
+    ViewData["Title"] = "Ad";
+}
+
+@TempData["message"]
+
+<div>
+    <ol class="breadcrumb">
+        <!--shows how far in the page you are-->
+        <li><a asp-controller="Category" asp-action="Categories">Categories</a></li>
+        <li><a asp-controller="Ads" asp-action="CategoryAds" asp-route-id="@Model.CategoryId">Category Ads</a></li>
+        <li class="active">@Model.Title</li>
+    </ol>
+</div>
+
+<h3 style="height:50px">@Model.Title</h3>
+
+<div>
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="@Model.Photo"><img src="@Model.Photo" alt="Photo" style="height:200px"></a>
+        </div>
+        <div class="col-sm-8">
+            <h4><b>Price:</b> @Model.Price </h4>
+            <h4><b>Place:</b> @Model.Place</h4>
+            @if (Context.Session.GetUserEmail() != null)
+            {
+                <h4><b>Phone:</b> @Model.Phone</h4>
+                <h4><b>Email:</b> @Model.Email</h4>
+            }
+            <h4><b>Description:</b> @Model.Description</h4>
+            @if (Model.Placed != null)
+            {
+                <h4><b>Placed: </b>@Model.Placed.ToShortDateString()</h4>
+            }
+
+
+        </div>
+    </div>
+</div>

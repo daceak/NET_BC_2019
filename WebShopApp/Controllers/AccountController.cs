@@ -12,6 +12,13 @@ namespace WebShopApp.Controllers
 {
     public class AccountController : Controller
     {
+        private UserManager _userManager;
+        
+        public AccountController (UserManager userManager)
+        {
+            _userManager = userManager;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -32,18 +39,18 @@ namespace WebShopApp.Controllers
         {
             if(ModelState.IsValid)
             {
-                UserManager manager = new UserManager();
-                if(manager.GetByEmail(model.Email) != null)
+                if(_userManager.GetByEmail(model.Email) != null)
                 {
                     ModelState.AddModelError("error", "Email already exists!"); //userModel parbauda nosacijumus
                 }
                 else
                 {
-                    manager.Create(new User()
+                    _userManager.Create(new User()
                     {
                         Email = model.Email,
                         Password = model.Password,
                     });
+                    
                     TempData["message"] = "Account created"; //pat ja nosuta uz citu lapu tapat saglaba ievaditos datus- temporary
                     return RedirectToAction("SignIn"); //parsuta uz citu lapu (view) pec nosaukuma
                 }               
@@ -56,8 +63,7 @@ namespace WebShopApp.Controllers
         {
             if(ModelState.IsValid)
             {
-                UserManager manager = new UserManager();
-                var user = manager.GetByEmailAndPassword(model.Email, model.Password);
+                var user = _userManager.GetByEmailAndPassword(model.Email, model.Password);
                 if (user == null)
                 {
                     ModelState.AddModelError("error2", "Email not found, try again or go to Sign up to create a new user!"); //userModel parbauda nosacijumus

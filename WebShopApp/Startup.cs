@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebShop;
 
 namespace WebShopApp
 {
@@ -32,6 +34,17 @@ namespace WebShopApp
 
             services.AddSession(); //pievieno sesijas web app (saglaba datus uz vienu sesiju)
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<WebShopDB>
+                (db => db.UseSqlServer(Configuration.GetConnectionString("MyDB"))); 
+            //configuration- var pieklut visam kas definets configuracija (appsettings.json)
+           //visur kur saja projekta tiks izmantots WebSHopDb visut tiks izmantota si klase, 
+            //jo seit addDb context nosaka, ka visur kur izmantota klase WebSHopDb japielieto datubazi kas noradita zem MyDB
+           //Dependency injection- automatiski tiek pielikts
+
+            services.AddScoped<CategoryManager>(); //veidot sos manager automatisk, kad sakas aplikacija
+            services.AddScoped<ItemManager>();
+            services.AddScoped<UserManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +60,7 @@ namespace WebShopApp
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy(); atstat ja ir Http, ja https (secure) tad aizkomentet
 
             app.UseSession(); //pielietot pirms tam pievienotos session
 

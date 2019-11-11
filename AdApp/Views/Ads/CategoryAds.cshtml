@@ -1,0 +1,49 @@
+﻿@model List<AdsAppLogic.Ad>
+@{
+    ViewData["Title"] = "CategoryAds";
+}
+
+    <div>
+        <ol class="breadcrumb">
+            <!--shows how far in the page you are-->
+            <li><a asp-controller="Category" asp-action="Categories">Categories</a></li>
+            <li class="active">Category Ads</li>
+        </ol>
+    </div>
+
+@if (Model.Count < 1)
+{
+    <div style="color:darkblue"><h4>No ads in this category</h4></div>
+}
+else
+{
+    <h2>Category ads</h2>
+    <br />
+    <table border="1" class="text-center">
+        <tr style="height:50px">
+            <th class="text-center"><h4>Picture</h4></th>
+            <th class="text-center"><h4>Description</h4></th>
+            <th class="text-center"><h4>Price</h4></th>
+            <th></th>
+        </tr>
+        @foreach (var ad in Model)
+        {
+            <tr style="height:150px">
+                <td class="col-md-4">
+                    <a href="@ad.Photo">
+                        <img src="@ad.Photo" alt="Photo" style="height:130px">
+                    </a>
+                </td>
+                <td>
+                    @ad.Description
+                </td>
+                <td class="col-md-2">
+                    @ad.Price
+                </td>
+                <td class="col-md-1">
+                    <a asp-controller="Ads" asp-action="Ad" asp-route-id="@ad.Id">More info</a>
+                </td> @*asp-route-id parametrs ko dod lidzi. saja gadijuma id*@
+            </tr>
+        }
+    </table>
+}

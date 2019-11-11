@@ -15,10 +15,8 @@
 
                         @foreach (var subcategory in Model.Categories.FindAll(c => c.CategoryId == category.Id))
                                 {
-                            <li><a asp-controller="Item" asp-action="Index"  asp-route-id="@subcategory.Id">@subcategory.Title<span class="badge navbar-right">@Model.AllItems.Count(c => c.CategoryId == subcategory.Id)</span></a></li>
+                            <li><a asp-controller="Item" asp-action="Index"  asp-route-id="@subcategory.Id">@subcategory.Title<span class="badge navbar-right">@subcategory.ItemCount</span></a></li>
                         }
-
-
                     }
                 </ul>
             </div>
@@ -38,7 +36,7 @@
                 <div class="col-md-4">
                     <div class="thumbnail">
                         <a href="@item.Photo">
-                            <img src="@item.Photo" alt="Samsung Photo" style="height:100px">
+                            <img src="@item.Photo" alt="Item Photo" style="height:130px">
                         </a>
                         <div class="caption" style="text-align:center">
                             <div>

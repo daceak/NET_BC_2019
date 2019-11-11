@@ -10,23 +10,34 @@ namespace WebShopApp.Controllers
 {
     public class ItemController : Controller
     {
-        
+        private CategoryManager _categories; //norada, ka izmantots dependency. butiba _categories ir category manager klase izveidota. pieejams visa saja klase (visam metodem)
+        private ItemManager _itemManager; 
+
+        public ItemController (CategoryManager categoryManager, ItemManager itemManager) //ar so konstruktoru katru reizi izsaucot so klasi tiks definets categoryManager
+        {
+            _categories = categoryManager; //seit sanem parametru categoryManager, kas tiek noradits ka visu sanemt startup klase 
+            //uzsakot programmu tiek izveidots category manager kas tiek padots saja klasee, jo tas ir nodefinets startup klase
+            _itemManager = itemManager;
+        }
+
         public IActionResult Index(int id)
         {
-            var manager = new ItemManager();
-            manager.Seed();
+            List<Item> items = _itemManager.GetByCategory(id);
+            var allItems = _itemManager.GetAll(); //allItems prieks item skaita katra apkaskategorija
 
-            var items = manager.GetByCategory(id);
-            var allItems = manager.Items;
+            List<Category> categories = _categories.GetAll();
 
-            var categoryManager = new CategoryManager();
-            categoryManager.Seed();
-            var categories = categoryManager.GetAll();
+          
+            foreach (var cat in categories)
+            {
+                int count = allItems.Count(i => i.CategoryId == cat.Id);
+                cat.ItemCount = count;  
+            }
+
             var model = new CatalogModel()
             {
                 Items = items,
-                Categories = categories,
-                AllItems = allItems,
+                Categories = categories,   
             };
             return View(model);
         }
@@ -40,10 +51,8 @@ namespace WebShopApp.Controllers
             }
             basket.Add(id);
             HttpContext.Session.SetUserBasket(basket);
-            ItemManager manager = new ItemManager();
-            manager.Seed();
-            int categoryId = manager.Get(id).CategoryId;
-            return RedirectToAction("Index", "Item", new { id = categoryId }); //controller, action, parameter (CategoryManager)
+            int categoryId = _itemManager.Get(id).CategoryId;
+            return RedirectToAction("Index", "Item", new { id = categoryId }); //controller, action, parameter (CategoryManager)- var but vairaki
             //grozs dzesas pec sesijas, ja grib lai saglabajas, tad jaizmanto datubazes
             //Sesijas ilgums iebuvetais 1h, bet var mainit
         }
@@ -56,11 +65,10 @@ namespace WebShopApp.Controllers
 
             if (basket != null)
             {
-                var manager = new ItemManager();
-                manager.Seed(); //so nonemt kad bus datubaze
+
                 foreach (var id in basket)
                 {
-                    items.Add(manager.Get(id));
+                    items.Add(_itemManager.Get(id));
                 }
 
             }

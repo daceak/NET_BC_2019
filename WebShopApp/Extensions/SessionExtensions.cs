@@ -36,7 +36,7 @@ namespace WebShopApp
 
         public static void SetUserBasket(this ISession session, List<int> items)
         {
-            var json = JsonConvert.SerializeObject(items);
+            var json = JsonConvert.SerializeObject(items); //katram objektam ir sava atslega un vertiba (piem., sarakstiem utt)
 
             session.SetString(BASKET, json);
         }

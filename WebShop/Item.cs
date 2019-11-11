@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace WebShop
 {
-    public class Item : ItemManager
+    public class Item : BaseData
     {
-        public int Id { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; } //decimal precizaks 
         public string Title { get; set; }
         public string Description { get; set; }
         public string Photo { get; set; }

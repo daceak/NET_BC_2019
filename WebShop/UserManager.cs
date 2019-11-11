@@ -3,64 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebShop
 {
-    public class UserManager
+    public class UserManager : BaseManager<User>
     {
-        private int currentId;
         //static nosaka, ka sis mainigais nav saistits ne ar vienu objektu. Veidojot jaunu user manager netiks katru reizi taisits jauns saraksts pari ieprieksejam
-        private static List<User> Users = new List<User>();  
 
-
-        public UserManager()
+        public UserManager(WebShopDB db)
+            :base(db)
         {
-            currentId = 100;
+
+        }
+
+        protected override DbSet<User> Table
+        {
+            get
+            {
+                return _db.Users;
+            }
         }
 
         public User GetByEmailAndPassword(string email, string password) //compare to existing user
         {
-            User user = Users.Find(u => u.Email == email && u.Password == password); //search in users list by 2 criteria
+            User user = _db.Users.FirstOrDefault(u => u.Email == email && u.Password == password); //search in users list by 2 criteria
             return user;
         }
-        public User Create(User user)
-        {
-            user.Id = currentId;
-            Users.Add(user);
-            currentId++;
-            return user;
-        }
+
         public User GetByEmail(string email)
         {
-            User user = Users.Find(u => u.Email == email); //search in users list
+            User user = _db.Users.FirstOrDefault(u => u.Email == email); //search in users list
             return user;
-        }
-        public void Delete(int id)
-        {
-            Users.Remove(Users.Find(u => u.Id == id));
-        }
-        public User Update(User user) //procedures with void. Method/function the same
-        {
-            User updatedUser = Users.Find(u => u.Id == user.Id);
-            updatedUser = user;
-            return updatedUser;
         }
 
         public void Seed()
         {
-            Users.Add(new User()
-            {
-                Id = 1, 
-                Email = "d@l.lv", 
-                Password = "1234"
-            });
-            
-            Users.Add(new User()
-            {
-                Id = 2,
-                Email = "e@l.lv",
-                Password = "4321"
-            });
         }
     }
 }

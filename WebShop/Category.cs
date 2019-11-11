@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WebShop
 {
-    public class Category : CategoryManager
+    public class Category : BaseData
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public int? CategoryId { get; set; } //ja nav ? tad datu tips nav nullejams un vertibai vienmer ir jabut
+        
+        [NotMapped] //datubaze so mainigo nenemt vera. virtual column
+        public int ItemCount { get; set; }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model List<AdsAppLogic.Category>
+@{
+    ViewData["Title"] = "Categories";
+}
+@if (Context.Session.GetUserEmail() != null)
+{
+    @TempData["message"]
+}
+
+<div>
+    <ol class="breadcrumb">
+        <!--shows how far in the page you are-->
+        <li class="active">Categories</li>
+    </ol>
+</div>
+
+@if (Context.Session.GetUserEmail() != null)
+{
+    <div class="container">
+        <div>
+            <a class="btn btn-default; pull-right" style="background-color:royalblue; color:white" asp-controller="Ads" asp-action="AddNew">Add new</a>
+        </div>
+    </div>
+    <br />
+}
+
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var category in Model.FindAll(c => !c.CategoryId.HasValue))
+        {
+            <div class="col-md-3">
+                <ul class=" nav nav-pills nav-stacked">
+                    <li class="active"><a href="#">@category.Title</a></li>
+                    @foreach (var sub in Model.FindAll(c => c.CategoryId == category.Id))
+                    {
+                        <li><a asp-controller="Ads" asp-action="CategoryAds" asp-route-id="@sub.Id">@sub.Title<span class="badge navbar-right">@sub.AdCount</span></a></li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+</div>
